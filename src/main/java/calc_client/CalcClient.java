@@ -14,8 +14,7 @@ public class CalcClient {
              DataInputStream in = new DataInputStream(socket.getInputStream());
              DataOutputStream out = new DataOutputStream(socket.getOutputStream())) {
             while (true) {
-                System.out.println("Это Калькулятор. Введите уравнение:");
-                System.out.print("или ВЫХОД для остановки приложения");
+                System.out.println("\nЭто Калькулятор.\nДоступные мат. операции : '+', '-', '*', '/' \nВЫХОД - для остановки приложения\nВведите уравнение:");
                 String mes = scanner.nextLine();
                 if (mes.equals("ВЫХОД")) break;
                 out.writeUTF(mes);
