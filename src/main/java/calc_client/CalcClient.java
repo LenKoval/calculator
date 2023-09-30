@@ -13,14 +13,16 @@ public class CalcClient {
         try (Socket socket = new Socket("localhost", 8088);
              DataInputStream in = new DataInputStream(socket.getInputStream());
              DataOutputStream out = new DataOutputStream(socket.getOutputStream())) {
-            System.out.println("Это калькулятор\nДоступные мат. операции : '+', '-', '*', '/' \nВЫХОД - для остановки приложения");
+            String ans1 = in.readUTF();
+            System.out.println(ans1);
             while (true) {
-                System.out.println("Введите уравнение:");
+                String ans2 = in.readUTF();
+                System.out.println(ans2);
                 String mes = scanner.nextLine();
                 if (mes.equals("ВЫХОД")) break;
                 out.writeUTF(mes);
-                String ans = in.readUTF();
-                System.out.println("Ответ: " + ans);
+                String ans3 = in.readUTF();
+                System.out.println("Ответ: " + ans3);
             }
         } catch (UnknownHostException e) {
             e.printStackTrace();

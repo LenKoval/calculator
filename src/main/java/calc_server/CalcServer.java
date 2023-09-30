@@ -20,13 +20,13 @@ public class CalcServer {
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             System.out.println("DataInputStream создан");
             System.out.println("DataOutStream создан");
+            out.writeUTF("Это калькулятор\nДоступные мат. операции : '+', '-', '*', '/' \nВЫХОД - для остановки приложения");
 
             while (true) {
+                out.writeUTF("Введите уравнение: ");
                 System.out.println("Чтение из канала");
                 String input = in.readUTF();
-
                 if (input.equals("ВЫХОД")) break;
-
                 System.out.println("Полученное уравнение: " + input);
                 Calculator calculator = new Calculator();
                 calculator.addNumbers(input);
